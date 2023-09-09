@@ -1,0 +1,5 @@
+shader "res://shaders/lighting.shd"
+albedo "res://textures/grass.png"
+
+shine-damper 50f
+reflectivity 0f

@@ -1,0 +1,51 @@
+/*
+Qrescent - Unshaded shader
+
+Renders objects with just their vertex colors and textures,
+no lighting or fancy effects.
+*/
+
+vertex `
+#version 400 core
+
+layout(location=0) in vec3 position;
+layout(location=1) in vec2 uv;
+layout(location=3) in vec4 color;
+
+out vec2 passUV;
+out vec4 passColor;
+
+uniform mat4 transform;
+uniform mat4 projection;
+uniform mat4 view;
+
+void main()
+{
+    vec4 worldPosition = transform * vec4(position, 1.0);
+    gl_Position = projection * view * worldPosition;
+
+    passUV = uv;
+    passColor = color;
+}
+`
+
+fragment `
+#version 400 core
+#define TEXTURE_ALBEDO 1
+
+in vec2 passUV;
+in vec4 passColor;
+
+out vec4 finalColor;
+
+uniform uint texUseFlags = 0;
+uniform sampler2D texAlbedo;
+
+void main()
+{
+    finalColor = passColor;
+
+    if ((texUseFlags & TEXTURE_ALBEDO) > 0)
+        finalColor *= texture(texAlbedo, passUV);
+}
+`

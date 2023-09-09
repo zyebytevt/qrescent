@@ -1,0 +1,8 @@
+# load the base configuration
+exec "res://default.cfg"
+# load the last saved configuration
+exec "user://config.cfg"
+# run a user script file if present
+exec "user://autoexec.cfg"
+# stuff command line statements
+stuffcmds

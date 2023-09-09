@@ -1,0 +1,4 @@
+shader "res://shaders/lighting.shd"
+
+shine-damper 20f
+reflectivity 0.1f

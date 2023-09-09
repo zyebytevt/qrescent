@@ -1,0 +1,141 @@
+version 1
+
+systems {
+    render3D
+    render2D
+    physics3D
+    game
+}
+
+entity 0 {
+    meta {
+        camera-rotation-obj true
+    }
+
+    components {
+        transform3D {
+            translation 0f 0f 0f
+            rotation 1f 0f 0f 0f
+            scale 1f 1f 1f
+        }
+    }
+}
+
+entity 1 {
+    parent 0
+
+    components {
+        transform3D {
+            translation 0f 18f 25f
+            rotation 0.96593f -0.25882f 0f 0f
+            scale 1f 1f 1f
+        }
+
+        camera {
+            width 800f
+            height 600f
+            near 0.01f
+            far 1000f
+            fov 90f
+            active on
+            mode "perspective"
+            skybox "res://materials/skybox.sky"
+        }
+    }
+}
+
+entity 2 {
+    components {
+        transform3D {
+            translation 0f 0f 0f
+            rotation 1f 0f 0f 0f
+            scale 10f 1f 10f
+        }
+
+        mesh {
+            mesh "res://models/cube_detatched.obj"
+            material "res://materials/ground.mat"
+        }        
+
+        physics3D {
+            kinematic false
+            mass 1f
+            linear-drag 0.1f
+            angular-drag 0.2f
+            bounciness 0f
+            gravitation-scale 0f
+
+            shape {
+                type "box"
+                extents 1f 1f 1f
+            }
+        }
+    }
+}
+
+entity 3 {
+    components {
+        transform3D {
+            translation 100f 100f 0
+            rotation 1f 0f 0f 0f
+            scale 1f 1f 1f
+        }
+
+        light {
+            color 1f 1f 1f
+            attenuation 0.0003f 0.005f 0.00001f
+        }
+    }
+}
+
+entity 4 {
+    components {
+        transform3D {
+            translation 0f 2f 0
+            rotation 1f 0f 0f 0f
+            scale 1f 1f 1f
+        }
+
+        light {
+            color 1f 0f 0f
+            attenuation 0.05f 0.1f 0.01f
+        }
+    }
+}
+
+entity 50 {
+    components {
+        transform2D {
+            translation 0f 0f
+            rotation 0f
+            scale 1f 1f
+        }
+
+        camera {
+            width 800f
+            height 600f
+            near -1f
+            far 1f
+            active on
+            mode "orthographic"
+        }
+    }
+}
+
+entity 51 {
+    components {
+        transform2D {
+            translation 5f 595f
+            rotation 0f
+            scale 1f 1f
+         }
+
+         text {
+            text "Press SPACE to spawn a ball. Be careful, too many can cause some lag.\nPress LEFT and RIGHT to turn the camera.\nPress LEFT CONTROL to shake the world.\nPress TAB to open Qomproc if you really want to."
+            shader "res://shaders/unshaded.shd"
+            font "res://fonts/qomproc.qft"
+            align-horizontal "left"
+            align-vertical "bottom"
+         }
+     }
+}

@@ -1,0 +1,6 @@
+positive-x "res://textures/skybox/right.png"
+negative-x "res://textures/skybox/left.png"
+positive-y "res://textures/skybox/top.png"
+negative-y "res://textures/skybox/bottom.png"
+positive-z "res://textures/skybox/back.png"
+negative-z "res://textures/skybox/front.png"

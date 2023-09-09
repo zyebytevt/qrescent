@@ -1,0 +1,11 @@
+exec res://qrescent.rc
+
+bind tab toggleconsole
+bind space +spawn
+bind leftarrow +left
+bind rightarrow +right
+bind leftctrl +shake
+
+vid_scalemode 1
+
+developer 1
